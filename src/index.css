@@ -60,7 +60,7 @@ header {
   width: 100%;
 }
 .active {
-  color: brown !important;
+  color: blue !important;
 }
 main {
   padding: 20px;

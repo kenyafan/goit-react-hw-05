@@ -49,7 +49,7 @@ const MovieDetailsPage = () => {
         </div>
       </div>
       <div>
-        <h3>Additional information</h3>
+        <h3 className={s.title}>Additional information</h3>
         <ul className={s.list}>
           <li className={s.item}>
             <Link className={s.link} to="cast">
