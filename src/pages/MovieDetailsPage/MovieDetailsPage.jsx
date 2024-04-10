@@ -17,7 +17,7 @@ const MovieDetailsPage = () => {
   }, [movieId]);
 
   if (!movie) {
-    return <h2>Loading...</h2>;
+    return <Loader />;
   }
 
   const { poster_path, title, vote_average, overview, genres } = movie;

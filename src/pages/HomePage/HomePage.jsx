@@ -2,12 +2,17 @@ import { useEffect, useState } from "react";
 import s from "./HomePage.module.css";
 import { fetchTrendingMovies } from "../../api/getFilms";
 import { Link } from "react-router-dom";
+import Loader from "../../components/Loader/Loader";
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
   useEffect(() => {
     fetchTrendingMovies().then((data) => setMovies(data.results));
   }, []);
+
+  if (!movies) {
+    return <Loader />;
+  }
 
   return (
     <section className={s.section}>
