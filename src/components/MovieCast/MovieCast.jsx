@@ -14,18 +14,18 @@ const MovieCast = () => {
   }, [movieId]);
 
   return (
-    <div>
+    <div className={s.cast}>
       {cast && (
-        <ul>
+        <ul className={s.list}>
           {cast.cast.map((actor) => (
-            <li key={actor.id}>
+            <li key={actor.id} className={s.item}>
               <img
                 className={s.poster}
                 src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
                 alt={actor.name}
               />
-              <p>{actor.name}</p>
-              <p>Character: {actor.character}</p>
+              <p className={s.name}>{actor.name}</p>
+              <p className={s.character}>Character: {actor.character}</p>
             </li>
           ))}
         </ul>

@@ -12,8 +12,13 @@ const SearchBar = ({ setUseSearchParams }) => {
   return (
     <Formik initialValues={initialValues} onSubmit={handleSubmit}>
       <Form className={s.form}>
-        <Field className={s.input} name="query" placeholder="Search movie" />
-        <button className={s.button} type="submit">
+        <Field
+          className={s.input}
+          name="query"
+          placeholder="Search movie"
+          autocomplete="off"
+        />
+        <button className={s.searchButton} type="submit">
           Search
         </button>
       </Form>

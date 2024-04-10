@@ -1,5 +1,5 @@
-import { Outlet, useLocation } from "react-router-dom";
-import { Suspense, useEffect } from "react";
+import { Outlet } from "react-router-dom";
+import { Suspense } from "react";
 import Loader from "../Loader/Loader";
 import Navigation from "../Navigation/Navigation";
 

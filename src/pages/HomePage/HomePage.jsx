@@ -10,16 +10,18 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className={s.HomePage}>
-      <h2 className={s.title}>Trending</h2>
+    <section className={s.section}>
+      <h2 className={s.title}>Trending today</h2>
       <ul className={s.list}>
         {movies.map((movie) => (
           <li key={movie.id} className={s.item}>
-            <Link to={"/movies/" + movie.id.toString()}>{movie.title}</Link>
+            <Link className={s.link} to={"/movies/" + movie.id.toString()}>
+              {movie.title}
+            </Link>
           </li>
         ))}
       </ul>
-    </div>
+    </section>
   );
 };
 

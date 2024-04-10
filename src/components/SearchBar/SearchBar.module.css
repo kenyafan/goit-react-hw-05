@@ -1,14 +1,8 @@
-.header {
-  margin-bottom: 20px;
-  background-color: aquamarine;
-  padding: 10px;
-  width: 100%;
-}
-
 .form {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 30px;
 }
 
 .input {
@@ -20,6 +14,13 @@
   background-color: #fff;
   color: #000;
   font-size: 18px;
+  &:hover {
+    background-color: #f0f0f0;
+  }
+  &:focus {
+    outline: none;
+    border-color: blue;
+  }
 }
 
 .searchButton {

@@ -3,6 +3,7 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 import { fetchSearchMovies } from "../../api/getFilms";
 import { useSearchParams } from "react-router-dom";
 import MovieList from "../../components/MovieList/MovieList";
+import s from "./MoviesPage.module.css";
 const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
   const [searchParams, setUseSearchParams] = useSearchParams();
@@ -20,7 +21,7 @@ const MoviesPage = () => {
   }, [searchParams]);
 
   return (
-    <div>
+    <div className={s.movies}>
       <SearchBar setUseSearchParams={setUseSearchParams} />
       <MovieList movies={movies} />
     </div>

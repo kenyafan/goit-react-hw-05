@@ -27,7 +27,7 @@ const MovieDetailsPage = () => {
       <Link className={s.linkGoBack} to={goBackRef.current || "/"}>
         Go back
       </Link>
-      <div className={s.container}>
+      <div className={s.infoCard}>
         <div className={s.posterContainer}>
           <img
             className={s.poster}

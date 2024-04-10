@@ -3,7 +3,8 @@ import s from "./Navigation.module.css";
 
 const Navigation = () => {
   return (
-    <>
+    <header className={s.header}>
+      <h1 className={s.title}>Navigation</h1>
       <ul className={s.list}>
         <li className={s.item}>
           <NavLink className={s.link} to="/">
@@ -16,7 +17,7 @@ const Navigation = () => {
           </NavLink>
         </li>
       </ul>
-    </>
+    </header>
   );
 };
 
