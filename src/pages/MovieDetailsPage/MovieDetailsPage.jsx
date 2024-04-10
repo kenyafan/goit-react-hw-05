@@ -1,9 +1,11 @@
-import s from "./MovieDetailsPage.module.css";
 import { Suspense, useEffect, useRef, useState } from "react";
 import { Link, Outlet, useParams, useLocation } from "react-router-dom";
 
-import { fetchMovieById } from "../../api/getFilms";
 import Loader from "../../components/Loader/Loader";
+import { fetchMovieById } from "../../api/getFilms";
+
+import s from "./MovieDetailsPage.module.css";
+
 
 const MovieDetailsPage = () => {
   const location = useLocation();

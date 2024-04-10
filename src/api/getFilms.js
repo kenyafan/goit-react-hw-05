@@ -52,13 +52,15 @@ export const fetchMovieCast = async (movieId) => {
 };
 
 export const fetchSearchMovies = async (query) => {
-  const response = await axios.get(
-    `3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`,
-    {
-      headers: {
-        Authorization: API_KEY,
-      },
-    }
-  );
+  const response = await axios.get(`3/search/movie?query=${query}`, {
+    headers: {
+      Authorization: API_KEY,
+    },
+    params: {
+      language: "en-US",
+      page: 1,
+      include_adult: "false",
+    },
+  });
   return response.data;
 };

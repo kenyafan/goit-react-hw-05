@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-import s from "./HomePage.module.css";
-import { fetchTrendingMovies } from "../../api/getFilms";
 import { Link } from "react-router-dom";
+
 import Loader from "../../components/Loader/Loader";
+
+import { fetchTrendingMovies } from "../../api/getFilms";
+import s from "./HomePage.module.css";
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);

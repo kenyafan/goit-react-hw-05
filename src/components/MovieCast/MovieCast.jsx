@@ -1,8 +1,10 @@
 import { Suspense, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+
+import Loader from "../Loader/Loader";
+
 import { fetchMovieCast } from "../../api/getFilms";
 import s from "./MovieCast.module.css";
-import Loader from "../Loader/Loader";
 
 const MovieCast = () => {
   const { movieId } = useParams();
