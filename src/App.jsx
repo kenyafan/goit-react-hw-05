@@ -1,90 +1,34 @@
+import { Routes, Route } from "react-router-dom";
+import { lazy } from "react";
+
+import Layout from "./components/Layout/Layout";
+
 import "modern-normalize";
 import "./index.css";
-import { useEffect, useState } from "react";
-import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
-import ImageGallery from "./components/ImageGallery/ImageGallery";
-import ImageModal from "./components/ImageModal/ImageModal";
-import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
-import Loader from "./components/Loader/Loader";
-import SearchBar from "./components/SearchBar/SearchBar";
-import { fetchImages } from "./api/getImage";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+import MovieCast from "./components/MovieCast/MovieCast";
+import MovieReviews from "./components/MovieReviews/MovieReviews";
 
-function App() {
-  const [images, setImages] = useState([]);
-  const [page, setPage] = useState(1);
-  const [query, setQuery] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
-  const [isOpen, setIsOpen] = useState(false);
-  const [tapImage, setTapImage] = useState(null);
-  const [totalImages, setTotalImages] = useState(0);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
+const MoviesPage = lazy(() => import("./pages/MoviesPage/MoviesPage"));
+const MovieDetailsPage = lazy(() =>
+  import("./pages/MovieDetailsPage/MovieDetailsPage")
+);
 
-  const openModal = (imageUrl) => {
-    setTapImage(imageUrl);
-    setIsOpen(true);
-  };
-
-  const closeModal = () => {
-    setTapImage(null);
-    setIsOpen(false);
-  };
-
-  useEffect(() => {
-    if (query) {
-      setIsLoading(true);
-      const getImages = async () => {
-        try {
-          const response = await fetchImages(query, page);
-          if (response) {
-            setTotalImages(response.total);
-            if (response.results.length === 0) {
-              setError("No results found");
-            } else {
-              setImages((prev) => [...prev, ...response.results]);
-              setError("");
-            }
-          } else {
-            setError(true);
-          }
-        } catch (error) {
-          console.log(error);
-          setError(true);
-        } finally {
-          setIsLoading(false);
-        }
-      };
-      getImages();
-    }
-  }, [query, page]);
-
-  const handleSubmit = (newQuery) => {
-    if (newQuery === query) {
-      return;
-    }
-    setIsLoading(true);
-    setImages([]);
-    setQuery(newQuery);
-    setPage(1);
-    setIsSubmitted(true);
-  };
-
-  const handleLoadMore = () => {
-    setPage((prev) => prev + 1);
-  };
-
+const App = () => {
   return (
-    <div className="container">
-      <SearchBar onSubmit={handleSubmit} />
-      <ImageGallery images={images} openModal={openModal} />
-      {isSubmitted && error && !isLoading && <ErrorMessage message={error} />}
-      <ImageModal isOpen={isOpen} closeModal={closeModal} imageUrl={tapImage} />
-      {isLoading && !error && <Loader />}
-      {!isLoading && !error && images.length < totalImages && (
-        <LoadMoreBtn onLoadMore={handleLoadMore} />
-      )}
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route path="movies" element={<MoviesPage />} />
+        <Route path="movies/:movieId" element={<MovieDetailsPage />}>
+          <Route path="cast" element={<MovieCast />} />
+          <Route path="reviews" element={<MovieReviews />} />
+        </Route>
+      </Route>
+      <Route path="*" element={<NotFoundPage />} />
+    </Routes>
   );
-}
+};
 
 export default App;

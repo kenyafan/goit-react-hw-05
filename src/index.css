@@ -53,3 +53,15 @@ body {
   width: 100%;
   padding-bottom: 20px;
 }
+
+header {
+  padding: 20px;
+  background-color: aquamarine;
+  width: 100%;
+}
+.active {
+  color: brown !important;
+}
+main {
+  padding: 20px;
+}
